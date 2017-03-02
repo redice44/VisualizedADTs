@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<title>Linked Lists</title>
+<style>
+#visualizer {
+  margin: 10px;
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<canvas id="visualizer" width="500" height="500"></canvas>
+<script src="singleLL.js"></script>
+<script src="visualizeSingleLL.js"></script>
+<script>
+
+var c = document.getElementById('visualizer');
+var list = new SinglyLinkedList();
+
+list.insert(new SinglyLinkedListNode(5));
+list.insert(new SinglyLinkedListNode(4));
+list.insert(new SinglyLinkedListNode(3));
+list.insert(new SinglyLinkedListNode(2));
+list.insert(new SinglyLinkedListNode(1));
+
+visualizeSingleLL(c, list);
+
+</script>
+</body>
+</html>
