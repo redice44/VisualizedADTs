@@ -1,5 +1,6 @@
 function SinglyLinkedList() {
   this.start = null;
+  this.step = null;
 }
 
 function SinglyLinkedListNode(data) {
@@ -11,6 +12,7 @@ SinglyLinkedList.prototype.insert = function(node) {
   if (this.start) {
     node.next = this.start;
     this.start = node;
+    this.step = node;
   } else {
     this.start = node;
   }
@@ -59,3 +61,14 @@ SinglyLinkedList.prototype.toString = function() {
   return out.substr(0, out.length - delim.length);
 };
 
+SinglyLinkedList.prototype.hasNext = function() {
+  return this.step !== null;
+};
+
+SinglyLinkedList.prototype.traverse = function(cb) {
+  if (!this.step) {
+    this.step = this.start;
+  }
+  cb(this.step.data);
+  this.step = this.step.next;
+};

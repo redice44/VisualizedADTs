@@ -4,7 +4,7 @@
 <title>Linked Lists</title>
 <style>
 #visualizer {
-  margin: 10px;
+  margin: 10px; 
   border: 1px solid black;
 }
 </style>
@@ -18,11 +18,9 @@
 var c = document.getElementById('visualizer');
 var list = new SinglyLinkedList();
 
-list.insert(new SinglyLinkedListNode(5));
-list.insert(new SinglyLinkedListNode(4));
-list.insert(new SinglyLinkedListNode(3));
-list.insert(new SinglyLinkedListNode(2));
-list.insert(new SinglyLinkedListNode(1));
+for (var i = 0; i < 20; i++) {
+  list.insert(new SinglyLinkedListNode(Math.floor(Math.random()*100)));
+}
 
 visualizeSingleLL(c, list);
 
