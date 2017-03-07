@@ -6,21 +6,24 @@ var visualizeSingleLL = function(canvasDom) {
   ctx.font = '30px sans-serif';
   ctx.fillText('Start', 10, 40);
 
-  for (var i = 0; i < 10; i++) {
+  var addBtn = document.getElementById('ll-add');
+  var addRandomBtn = document.getElementById('ll-add-random');
+
+  addBtn.addEventListener('click', function(e) {
+    var userData = document.getElementById('ll-add-value').value
+    var node = new SinglyLinkedListNode(userData);
+    
+    list.insert(node);
+    ctx.clearRect(0, 50, 500, 450);
+    drawList(ctx, list.getStart(), 0);
+  });
+
+  addRandomBtn.addEventListener('click', function(e) {
     var node = new SinglyLinkedListNode(Math.floor(Math.random()*100));
     list.insert(node);
-  }
-  console.log(list);
-
-  drawList(ctx, list.getStart(), 0);
-
-  for (var i = 0; i < 10; i++) {
-    var node = new SinglyLinkedListNode(Math.floor(Math.random()*100));
-    list.insert(node);
-  }
-  ctx.clearRect(0, 50, 500, 450);
-  drawList(ctx, list.getStart(), 0);
-
+    ctx.clearRect(0, 50, 500, 450);
+    drawList(ctx, list.getStart(), 0);
+  });
 };
 
 function drawList(ctx, start, index) {
