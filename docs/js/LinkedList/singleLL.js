@@ -1,6 +1,5 @@
 function SinglyLinkedList() {
   this.start = null;
-  this.step = null;
 }
 
 function SinglyLinkedListNode(data) {
@@ -12,7 +11,6 @@ SinglyLinkedList.prototype.insert = function(node) {
   if (this.start) {
     node.next = this.start;
     this.start = node;
-    this.step = node;
   } else {
     this.start = node;
   }
@@ -43,7 +41,7 @@ SinglyLinkedList.prototype.remove = function(data) {
 
   if (curNode.next) {
     curNode.next = curNode.next.next;
-    return true;    
+    return true;
   }
   return false;
 };
@@ -61,14 +59,14 @@ SinglyLinkedList.prototype.toString = function() {
   return out.substr(0, out.length - delim.length);
 };
 
-SinglyLinkedList.prototype.hasNext = function() {
-  return this.step !== null;
+SinglyLinkedList.prototype.getStart = function() {
+  return this.start;
 };
 
-SinglyLinkedList.prototype.traverse = function(cb) {
-  if (!this.step) {
-    this.step = this.start;
-  }
-  cb(this.step.data);
-  this.step = this.step.next;
+SinglyLinkedListNode.prototype.getData = function() {
+  return this.data;
+};
+
+SinglyLinkedListNode.prototype.hasNext = function() {
+  return this.next !== null;
 };
