@@ -41,7 +41,7 @@ SinglyLinkedList.prototype.remove = function(data) {
 
   if (curNode.next) {
     curNode.next = curNode.next.next;
-    return true;    
+    return true;
   }
   return false;
 };
