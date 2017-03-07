@@ -1,17 +1,35 @@
-var visualizeSingleLL = function(canvasDom, list) {
+var visualizeSingleLL = function(canvasDom) {
+  var list = new SinglyLinkedList();
   var ctx = canvasDom.getContext('2d');
   var i = 0;
 
   ctx.font = '30px sans-serif';
   ctx.fillText('Start', 10, 40);
 
-  while(list.hasNext()) {
-    list.traverse(function(data) {
-      drawNode(ctx, data, i);
-    });
-    i++;
+  for (var i = 0; i < 10; i++) {
+    var node = new SinglyLinkedListNode(Math.floor(Math.random()*100));
+    list.insert(node);
   }
+  console.log(list);
+
+  drawList(ctx, list.getStart(), 0);
+
+  for (var i = 0; i < 10; i++) {
+    var node = new SinglyLinkedListNode(Math.floor(Math.random()*100));
+    list.insert(node);
+  }
+  ctx.clearRect(0, 50, 500, 450);
+  drawList(ctx, list.getStart(), 0);
+
 };
+
+function drawList(ctx, start, index) {
+  var data = start.getData();
+  drawNode(ctx, data, index);
+  if (start.hasNext()) {
+    drawList(ctx, start.next, index+1);
+  }
+}
 
 function drawNode(ctx, data, index) {
   var numCol = 8;
